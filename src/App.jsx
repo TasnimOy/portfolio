@@ -263,7 +263,7 @@ function HeroArtwork() {
 }
 
 function App() {
-  const [theme, setTheme] = useState('earth');
+  const [theme, setTheme] = useState('twilight');
 
   return (
     <div className={`portfolio-page theme-${theme}`}>

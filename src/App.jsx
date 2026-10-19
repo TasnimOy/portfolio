@@ -271,25 +271,20 @@ const academicFormation = [
     organization: 'Daffodil International University',
     period: '2019',
     icon: 'education',
-    summary: 'CGPA: 3.85/4.00',
-    highlights: [
-      'Thesis: Environment Management using IoT-based Cost-Effective, Secured, Smart Sewerage and Air Pollution Monitoring System',
-    ],
+    thesis: 'Environment Management using IoT-based Cost-Effective, Secured, Smart Sewerage and Air Pollution Monitoring System',
   },
   {
     title: 'B.Sc. Computer Science & Engineering',
     organization: 'Daffodil International University',
     period: '2017',
     icon: 'education',
-    summary: 'CGPA: 3.56/4.00',
-    highlights: ["Thesis: Gamification in Children's Education"],
+    thesis: "Gamification in Children's Education",
   },
   {
     title: 'Erasmus Mundus Exchange Program',
     organization: 'Lodz University of Technology, Poland',
     period: '2015-2016',
     icon: 'education',
-    summary: 'CGPA: 4.50/5.00',
   },
 ];
 
@@ -339,7 +334,8 @@ function MilestoneCard({ item }) {
       </div>
       <p className="milestone-org">{item.organization}</p>
       {item.context && <p className="milestone-context">{item.context}</p>}
-      <p className="milestone-summary">{item.summary}</p>
+      {item.summary && <p className="milestone-summary">{item.summary}</p>}
+      {item.thesis && <p className="milestone-summary">Thesis: {item.thesis}</p>}
       {item.highlights && (
         <details className="milestone-details">
           <summary>Highlights</summary>

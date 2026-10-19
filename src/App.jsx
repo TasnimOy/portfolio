@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import tasnimPhoto from './assets/IMG_7278.jpeg';
+import { useEffect, useRef, useState } from 'react';
+import tasnimPhoto from './assets/portrait-headshot-crop.png';
 import { publicationLinks, publications, publicationStats } from './publications';
 import './App.css';
 
@@ -650,37 +650,149 @@ function HeroArtwork() {
   );
 }
 
+function Footer() {
+  return (
+    <footer className="site-footer">
+      <p>© {new Date().getFullYear()} Marzan Tasnim Oyshi. All rights reserved.</p>
+    </footer>
+  );
+}
+
+const navigationLinks = [
+  { id: 'about', label: 'About' },
+  { id: 'journey', label: 'Journey' },
+  { id: 'education', label: 'Education' },
+  { id: 'research', label: 'Research' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'publications', label: 'Publications' },
+  { id: 'skills', label: 'Toolkit' },
+  { id: 'contact', label: 'Contact' },
+];
+
 function App() {
-  const [theme, setTheme] = useState('twilight');
+  const [theme, setTheme] = useState('earth');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const themeDropdownRef = useRef(null);
+
+  useEffect(() => {
+    function closeThemeDropdown(event) {
+      const dropdown = themeDropdownRef.current;
+      if (dropdown && !dropdown.contains(event.target)) dropdown.open = false;
+    }
+    document.addEventListener('pointerdown', closeThemeDropdown);
+    return () => document.removeEventListener('pointerdown', closeThemeDropdown);
+  }, []);
+
+  useEffect(() => {
+    const sections = [...document.querySelectorAll('main section[id]')];
+    let animationFrame;
+
+    function updateActiveSection() {
+      let current = 'home';
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= 110) current = section.id;
+      }
+      // The last section may be too short to reach the top of the viewport.
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        current = sections.at(-1)?.id || current;
+      }
+      setActiveSection(current);
+    }
+
+    function scheduleUpdate() {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(updateActiveSection);
+    }
+
+    scheduleUpdate();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    window.addEventListener('hashchange', scheduleUpdate);
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+      window.removeEventListener('hashchange', scheduleUpdate);
+    };
+  }, []);
 
   return (
     <div className={`portfolio-page theme-${theme}`}>
       <header className="site-header">
-        <nav className="nav container" aria-label="Primary navigation">
-          <a className="brand" href="#home">
+        <nav
+          className="nav container"
+          aria-label="Primary navigation"
+          onKeyDown={(event) => {
+            if (event.key === 'Escape' && isMenuOpen) {
+              setIsMenuOpen(false);
+              event.currentTarget.querySelector('.menu-toggle').focus();
+            }
+          }}
+        >
+          <a className="brand" href="#home" aria-label="MTO — back to home" aria-current={activeSection === 'home' ? 'location' : undefined} onClick={() => setIsMenuOpen(false)}>
             MTO
           </a>
-          <div className="nav-actions">
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-expanded={isMenuOpen}
+            aria-controls="navigation-menu"
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <span aria-hidden="true">{isMenuOpen ? '✕' : '☰'}</span>
+          </button>
+          <div id="navigation-menu" className={`nav-actions${isMenuOpen ? ' is-open' : ''}`}>
             <div className="nav-links">
-              <a href="#about">About</a>
-              <a href="#journey">Journey</a>
-              <a href="#education">Education</a>
-              <a href="#research">Research</a>
-              <a href="#projects">Projects</a>
-              <a href="#publications">Publications</a>
-              <a href="#skills">Toolkit</a>
-              <a href="#contact">Contact</a>
+              {navigationLinks.map(({ id, label }) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  aria-current={activeSection === id ? 'location' : undefined}
+                  onClick={() => {
+                    setActiveSection(id);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  {label}
+                </a>
+              ))}
             </div>
-            <label className="theme-picker">
-              <span>Theme</span>
-              <select value={theme} onChange={(event) => setTheme(event.target.value)}>
+            <div className="theme-picker">
+              <span id="theme-label">Theme</span>
+              <details
+                className="theme-dropdown"
+                ref={themeDropdownRef}
+                onKeyDown={(event) => {
+                  if (event.key === 'Escape') {
+                    event.stopPropagation();
+                    event.currentTarget.open = false;
+                    event.currentTarget.querySelector('summary').focus();
+                  }
+                }}
+              >
+                <summary aria-label={`Choose theme: ${themeOptions.find((option) => option.value === theme).label}`}>
+                  {themeOptions.find((option) => option.value === theme).label}
+                </summary>
+                <div className="theme-options" role="group" aria-labelledby="theme-label">
                 {themeOptions.map((option) => (
-                  <option value={option.value} key={option.value}>
+                  <button
+                    type="button"
+                    key={option.value}
+                    aria-pressed={theme === option.value}
+                    onClick={() => {
+                      setTheme(option.value);
+                      themeDropdownRef.current.open = false;
+                      themeDropdownRef.current.querySelector('summary').focus();
+                    }}
+                  >
                     {option.label}
-                  </option>
+                  </button>
                 ))}
-              </select>
-            </label>
+                </div>
+              </details>
+            </div>
           </div>
         </nav>
       </header>
@@ -706,13 +818,11 @@ function App() {
               ))}
             </div>
 
-            <div className="portrait-wrap reveal">
+            <div className="portrait-wrap">
               <div className="portrait-frame">
-                <img
-                  className="profile-photo"
-                  src={tasnimPhoto}
-                  alt="Marzan Tasnim Oyshi"
-                />
+                <div className="profile-photo">
+                  <img src={tasnimPhoto} alt="Marzan Tasnim Oyshi" />
+                </div>
               </div>
               <div className="hero-affiliation" aria-label="Affiliation">
                 <span>Founder, ImUrP</span>
@@ -882,6 +992,7 @@ function App() {
               </div>
             </div>
           </div>
+          <Footer />
         </section>
       </main>
     </div>

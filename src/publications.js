@@ -1,17 +1,17 @@
-const profileUrl = 'https://www.researchgate.net/profile/Marzan-Tasnim-Oyshi';
+const profileUrl = 'https://www.researchgate.net/profile/Marzan-Tasnim-Oyshi?ev=hdr_xprf';
 
 export const publicationStats = [
   { label: 'Total Publications', value: '15' },
-  { label: 'Citations', value: '35' },
-  { label: 'h-index', value: 'TBD' },
-  { label: 'i10-index', value: 'TBD' },
+  { label: 'Citations', value: '57' },
+  { label: 'h-index', value: '5' },
+  { label: 'i10-index', value: '2' },
 ];
 
 export const publicationLinks = [
-  { label: 'Google Scholar', url: '#' },
+  { label: 'Google Scholar', url: 'https://scholar.google.com/citations?user=aFlXPVMAAAAJ&hl=de' },
   { label: 'ORCID', url: '#' },
   { label: 'ResearchGate', url: profileUrl },
-  { label: 'LinkedIn', url: '#' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/marzan-tasnim-oyshi-32323897/' },
 ];
 
 export const publications = [

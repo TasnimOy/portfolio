@@ -26,38 +26,343 @@ const themeOptions = [
   { value: 'aurora', label: 'Aurora Earth' },
 ];
 
-const skills = [
-  'Visualization',
-  'AR/VR',
-  'Machine Learning',
-  'IoT',
-  'Computer Vision',
-  'Data Analysis',
-  'Sustainability Research',
+const skillGroups = [
+  {
+    category: 'Visualization & Immersion',
+    description: 'Building spatial, interactive ways to explore complex systems.',
+    items: ['Unity', 'Blender', 'VR/AR', 'Visual analytics', 'Digital twins'],
+  },
+  {
+    category: 'Data Science & AI',
+    description: 'Processing, modeling, and interpreting data-driven environmental workflows.',
+    items: [
+      'Python',
+      'R',
+      'Data analysis',
+      'Data pipelines',
+      'Machine learning basics',
+      'Data-driven methods',
+    ],
+  },
+  {
+    category: 'Development & Engineering',
+    description: 'Creating reliable workflows, integrations, and reproducible technical systems.',
+    items: ['Git', 'C', 'C++', 'MATLAB', 'API-based data access', 'Data-sensitive development'],
+  },
+  {
+    category: 'Geospatial & Environmental Analysis',
+    description: 'Connecting spatial tools with environmental monitoring and preprocessing.',
+    items: [
+      'ArcGIS',
+      'QGIS',
+      'Environmental monitoring',
+      'Data integration',
+      'Data preprocessing',
+    ],
+  },
+  {
+    category: 'Research & Collaboration',
+    description: 'Designing studies, communicating research, and shaping decision-support systems.',
+    items: [
+      'User studies',
+      'Experimental design',
+      'Performance evaluation',
+      'LaTeX',
+      'Figma',
+      'Scalable data systems',
+      'Integrated data-simulation workflows',
+      'Data-driven decision support',
+    ],
+  },
 ];
 
-const projectPlaceholders = [
+const explorerProjects = [
   {
-    label: 'Research Project',
-    title: 'Climate Risk Decision Systems',
-    description:
-      'A placeholder for research work connecting data infrastructure, environmental risk, and decision support.',
+    title: 'Understanding Wind Dynamics in VR',
+    impact:
+      'Turns wind behavior around terrain and architecture into an immersive visual analytics experience for exploration and design insight.',
+    detail:
+      'A visual analytics project for studying wind patterns around terrain and architectural contexts inside VR.',
+    technologies: ['Virtual Reality', 'Wind Dynamics', 'Terrain Analysis', 'Visual Analytics'],
+    publicationLink: 'https://doi.org/10.13140/RG.2.2.36319.42404',
+    icon: 'wind',
   },
   {
-    label: 'Publication',
-    title: 'Publication Details Coming Soon',
-    description:
-      'A placeholder for peer-reviewed articles, conference papers, reports, or other research outputs.',
+    title: 'FloodVis',
+    impact:
+      'Transforms climate ensemble flood projections into an immersive space where uncertainty becomes easier to see, compare, and discuss.',
+    detail:
+      'An immersive visualization project focused on making climate ensemble flood projections more legible for exploration and decision support.',
+    technologies: ['Virtual Reality', 'Climate Data', 'Ensemble Visualization', 'Decision Support'],
+    showcaseLink:
+      'https://scads.ai/research/ai-algorithms-and-methods/scalable-visual-computing/projects/vr-floodvis/',
+    icon: 'flood',
   },
   {
-    label: 'Visualization Work',
-    title: 'Immersive and Scientific Visualization',
-    description:
-      'A placeholder for AR/VR, scientific visualization, and interactive data exploration work.',
+    title: 'ExtremeWeatherVis',
+    impact:
+      'Creates a VR environment for exploring extreme weather events across cities and supporting climate-risk communication.',
+    detail:
+      'A multi-city VR visualization approach for comparing extreme weather scenarios and communicating climate risk.',
+    technologies: ['VR', 'Extreme Weather', 'Multi-City Analysis', 'Scientific Visualization'],
+    publicationLink: 'https://doi.org/10.2312/envirvis.20241137',
+    icon: 'storm',
+  },
+  {
+    title: 'VRCellLabeler',
+    impact:
+      'Uses immersive interaction to make biological cell lineage labeling more spatial, intuitive, and collaborative.',
+    detail:
+      'An immersive labeling concept that brings biological cell lineage data into a spatial VR workflow.',
+    technologies: ['Virtual Reality', 'Immersive Labeling', 'Biological Data', '3D Interaction'],
+    icon: 'cell',
+  },
+  {
+    title: 'TmoTA',
+    impact:
+      'Supports machine learning workflows with a responsive annotation tool for multiple object tracking datasets.',
+    detail:
+      'A practical annotation tool designed to make multiple object tracking data preparation faster and more responsive.',
+    technologies: ['Computer Vision', 'Annotation Tools', 'Machine Learning', 'Object Tracking'],
+    showcaseLink:
+      'https://scads.ai/research/ai-algorithms-and-methods/scalable-visual-computing/projects/tmota/',
+    publicationLink: 'https://doi.org/10.1145/3544548.3581185',
+    icon: 'tracking',
+  },
+  {
+    title: 'Secure Environmental Management with IoT & Blockchain',
+    impact: 'Connecting environmental intelligence with secure, transparent data infrastructure.',
+    detail:
+      'A smart environmental management concept that uses IoT sensors for real-time environmental monitoring and blockchain to improve data security, transparency, and trust.',
+    technologies: [
+      'IoT',
+      'Blockchain',
+      'Environmental Monitoring',
+      'Data Security',
+      'Smart Systems',
+      'Sustainability',
+    ],
+    icon: 'secure-nature',
   },
 ];
 
-const contactLinks = ['Email', 'LinkedIn', 'Google Scholar', 'ResearchGate'];
+const contactLinks = [
+  { label: 'Email', url: 'mailto:mto.cse@gmail.com' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/marzan-tasnim-oyshi-32323897/' },
+  { label: 'Google Scholar', url: 'https://scholar.google.com/citations?user=aFlXPVMAAAAJ&hl=de' },
+  {
+    label: 'ResearchGate',
+    url: 'https://www.researchgate.net/profile/Marzan-Tasnim-Oyshi?ev=hdr_xprf',
+  },
+];
+
+const journeySummary = [
+  { label: 'Current Role', value: 'Research Associate, IOER' },
+  { label: 'Current Focus', value: 'Environmental Data Systems, FAIR Data Principles & Decision Support' },
+  { label: 'PhD Candidate', value: 'TU Dresden' },
+  { label: 'Research Areas', value: 'Visualization . Decision Support . Annotation . AI . Immersive Systems' },
+];
+
+const professionalJourney = [
+  {
+    title: 'Research Associate',
+    organization: 'IOER',
+    context: 'FDZ & Landscape, Ecosystem & Biodiversity',
+    period: 'May 2025 - Present',
+    icon: 'research',
+    current: true,
+    summary: 'Environmental data systems, geospatial datasets, and user-oriented decision support.',
+    highlights: [
+      'Data integration pipelines',
+      'Environmental and geospatial datasets',
+      'API-based data systems',
+      'Data preprocessing and harmonization',
+      'User-oriented decision-support systems',
+      'Horizon Europe proposal development',
+    ],
+  },
+  {
+    title: 'Coordination Team Member',
+    organization: 'Leibniz-Lab Systemic Sustainability',
+    period: 'April 2024 - April 2025',
+    icon: 'sustainability',
+    summary: 'Sustainability assessment and dashboard-oriented decision support.',
+    highlights: [
+      'Sustainability dashboards',
+      'Decision-support systems',
+      'Data-driven sustainability assessment',
+    ],
+  },
+  {
+    title: 'Research Associate',
+    organization: 'IOER',
+    context: 'Spatial Information and Modeling',
+    period: 'January 2024 - April 2025',
+    icon: 'data',
+    summary: 'Spatial information, modeling, and research data workflows.',
+  },
+  {
+    title: 'Research Associate',
+    organization: 'TU Dresden',
+    context: 'Chair of Computer Graphics & Visualization / ScaDS.AI',
+    period: 'April 2020 - December 2023',
+    icon: 'visualization',
+    summary: 'Visualization research, interactive systems, teaching, and academic support.',
+    highlights: [
+      'Teaching and supervision',
+      'Data visualization',
+      'Interactive systems',
+      'Publications and conferences',
+      'Academic operations',
+      'Student support',
+    ],
+  },
+  {
+    title: 'Lecturer',
+    organization: 'Daffodil International University',
+    context: 'Computer Science & Engineering',
+    period: 'May 2018 - March 2020',
+    icon: 'teaching',
+    summary: 'Computer science teaching, mentoring, and academic contribution.',
+  },
+  {
+    title: 'Researcher',
+    organization: 'TechSolutions Global',
+    period: 'April 2018 - March 2020',
+    icon: 'research',
+    summary: 'Applied research and technology-oriented problem solving.',
+  },
+  {
+    title: 'IoT Trainee',
+    organization: 'Datasoft Systems Bangladesh Limited',
+    period: 'October 2017 - March 2018',
+    icon: 'data',
+    summary: 'Early IoT systems training and sensor-oriented development foundations.',
+  },
+  {
+    title: 'Researcher . Game Developer . 3D Modeler',
+    organization: 'Data Angel Bangladesh Limited',
+    period: 'February 2017 - May 2017',
+    icon: 'visualization',
+    summary: 'Interactive media, game development, and 3D modeling experience.',
+  },
+  {
+    title: 'Content Developer . News Editor . Reporter',
+    organization: 'Techworld BD',
+    period: 'February 2015 - August 2015',
+    icon: 'teaching',
+    summary: 'Technology communication, writing, editing, and reporting.',
+  },
+];
+
+const academicFormation = [
+  {
+    title: 'Doctoral Candidate (PhD)',
+    organization: 'TU Dresden',
+    context: 'Computer Graphics & Visualization',
+    period: 'November 2022 - Expected 2026',
+    icon: 'education',
+    current: true,
+    summary:
+      'Immersive and data-driven decision support systems integrating heterogeneous environmental datasets.',
+  },
+  {
+    title: 'M.Sc. Computer Science & Engineering',
+    organization: 'Daffodil International University',
+    period: '2019',
+    icon: 'education',
+    summary: 'CGPA: 3.85/4.00',
+    highlights: [
+      'Thesis: Environment Management using IoT-based Cost-Effective, Secured, Smart Sewerage and Air Pollution Monitoring System',
+    ],
+  },
+  {
+    title: 'B.Sc. Computer Science & Engineering',
+    organization: 'Daffodil International University',
+    period: '2017',
+    icon: 'education',
+    summary: 'CGPA: 3.56/4.00',
+    highlights: ["Thesis: Gamification in Children's Education"],
+  },
+  {
+    title: 'Erasmus Mundus Exchange Program',
+    organization: 'Lodz University of Technology, Poland',
+    period: '2015-2016',
+    icon: 'education',
+    summary: 'CGPA: 4.50/5.00',
+  },
+];
+
+function SocialIcon({ label }) {
+  const iconText = {
+    Email: '@',
+    LinkedIn: 'in',
+    'Google Scholar': 'G',
+    ResearchGate: 'RG',
+    ORCID: 'iD',
+  };
+
+  return (
+    <span className={`social-icon social-${label.toLowerCase().replace(/\s+/g, '-')}`} aria-hidden="true">
+      {iconText[label] || label.charAt(0)}
+    </span>
+  );
+}
+
+function JourneyIcon({ type }) {
+  const iconText = {
+    research: 'R',
+    sustainability: 'S',
+    data: 'D',
+    visualization: 'V',
+    teaching: 'T',
+    education: 'E',
+  };
+
+  return (
+    <span className={`journey-icon icon-${type}`} aria-hidden="true">
+      {iconText[type] || 'R'}
+    </span>
+  );
+}
+
+function MilestoneCard({ item }) {
+  return (
+    <article className={`milestone-card ${item.current ? 'current' : ''}`}>
+      <div className="milestone-top">
+        <JourneyIcon type={item.icon} />
+        <div>
+          <p className="milestone-period">{item.period}</p>
+          <h3>{item.title}</h3>
+        </div>
+        {item.current && <span className="current-badge">Current</span>}
+      </div>
+      <p className="milestone-org">{item.organization}</p>
+      {item.context && <p className="milestone-context">{item.context}</p>}
+      <p className="milestone-summary">{item.summary}</p>
+      {item.highlights && (
+        <details className="milestone-details">
+          <summary>Highlights</summary>
+          <ul>
+            {item.highlights.map((highlight) => (
+              <li key={highlight}>{highlight}</li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </article>
+  );
+}
+
+function JourneyTimeline({ items }) {
+  return (
+    <div className="journey-timeline">
+      {items.map((item) => (
+        <MilestoneCard item={item} key={`${item.title}-${item.organization}-${item.period}`} />
+      ))}
+    </div>
+  );
+}
 
 function SectionHeader({ eyebrow, title, children }) {
   return (
@@ -140,6 +445,89 @@ function PublicationTimeline({ items }) {
         </div>
       ))}
     </div>
+  );
+}
+
+function ProjectGlyph({ type }) {
+  return (
+    <span className={`project-glyph glyph-${type}`} aria-hidden="true">
+      <span />
+      <span />
+      <span />
+    </span>
+  );
+}
+
+function ResearchExplorer({ projects }) {
+  return (
+    <div className="research-explorer reveal">
+      {projects.map((project) => (
+        <article className="explorer-stop" key={project.title}>
+          <div className="explorer-content">
+            <ProjectGlyph type={project.icon} />
+            <div className="explorer-copy">
+              <p className="card-label">Research Adventure</p>
+              <h3>{project.title}</h3>
+              <p>{project.impact}</p>
+              <div className="project-tech-list" aria-label={`${project.title} technologies`}>
+                {project.technologies.map((technology) => (
+                  <span key={technology}>{technology}</span>
+                ))}
+              </div>
+              <div className="project-actions">
+                <details className="project-details">
+                  <summary>Read more</summary>
+                  <p>{project.detail}</p>
+                </details>
+                {project.showcaseLink && (
+                  <a className="project-link" href={project.showcaseLink}>
+                    View showcase
+                  </a>
+                )}
+                {project.publicationLink && (
+                  <a className="project-link" href={project.publicationLink}>
+                    DOI
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function ToolkitGroup({ group, index }) {
+  const [isOpen, setIsOpen] = useState(() => {
+    if (typeof window === 'undefined') {
+      return true;
+    }
+
+    return window.matchMedia('(min-width: 761px)').matches || index === 0;
+  });
+
+  return (
+    <article className={`skill-group ${isOpen ? 'is-open' : ''}`}>
+      <button
+        aria-expanded={isOpen}
+        className="skill-group-toggle"
+        onClick={() => setIsOpen(!isOpen)}
+        type="button"
+      >
+        <span>{group.category}</span>
+        <small>{group.description}</small>
+      </button>
+      {isOpen && (
+        <div className="skill-pill-list">
+          {group.items.map((skill) => (
+            <span className="skill-pill" key={skill}>
+              {skill}
+            </span>
+          ))}
+        </div>
+      )}
+    </article>
   );
 }
 
@@ -275,10 +663,12 @@ function App() {
           <div className="nav-actions">
             <div className="nav-links">
               <a href="#about">About</a>
+              <a href="#journey">Journey</a>
+              <a href="#education">Education</a>
               <a href="#research">Research</a>
               <a href="#projects">Projects</a>
               <a href="#publications">Publications</a>
-              <a href="#skills">Skills</a>
+              <a href="#skills">Toolkit</a>
               <a href="#contact">Contact</a>
             </div>
             <label className="theme-picker">
@@ -325,6 +715,7 @@ function App() {
                 />
               </div>
               <div className="hero-affiliation" aria-label="Affiliation">
+                <span>Founder, ImUrP</span>
                 <span>Research Associate, IOER</span>
                 <span>Doctoral Candidate, TU Dresden</span>
               </div>
@@ -334,7 +725,6 @@ function App() {
           <div className="hero-content-panel container reveal">
             <p className="eyebrow">Scientist . Designer . Explorer</p>
             <h1>Marzan Tasnim Oyshi</h1>
-            <p className="hero-tagline">Where data becomes experience.</p>
             <p className="hero-intro">
               I explore how immersive technologies, climate intelligence, and
               data-driven systems can help people understand and navigate
@@ -371,6 +761,37 @@ function App() {
           </div>
         </section>
 
+        <section className="section journey-section" id="journey">
+          <div className="container">
+            <SectionHeader
+              eyebrow="Research & Professional Journey"
+              title="From current environmental data systems back to technical foundations."
+            >
+              A compact path through research, sustainability, visualization,
+              teaching, and technology work.
+            </SectionHeader>
+            <div className="journey-summary reveal" aria-label="Current research summary">
+              {journeySummary.map((item) => (
+                <div className="summary-chip" key={item.label}>
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </div>
+              ))}
+            </div>
+            <JourneyTimeline items={professionalJourney} />
+          </div>
+        </section>
+
+        <section className="section formation-section" id="education">
+          <div className="container">
+            <SectionHeader eyebrow="Academic Formation" title="Research training shaped by computing, visualization, and environmental systems.">
+              Education is shown newest first, from the current PhD to early
+              foundations in computer science and international exchange.
+            </SectionHeader>
+            <JourneyTimeline items={academicFormation} />
+          </div>
+        </section>
+
         <section className="section research-section" id="research">
           <div className="container">
             <SectionHeader eyebrow="Research Interests" title="A living map of inquiry.">
@@ -389,19 +810,11 @@ function App() {
 
         <section className="section projects-section" id="projects">
           <div className="container">
-            <SectionHeader eyebrow="Projects / Publications" title="Work in progress, ready to evolve.">
-              Project and publication details can be updated later as titles,
-              links, abstracts, and collaborators become ready to share.
+            <SectionHeader eyebrow="Research Explorer" title="Scientist . Designer . Explorer">
+              A journey through climate research, immersive visualization,
+              computer vision, and decision support systems.
             </SectionHeader>
-            <div className="project-grid">
-              {projectPlaceholders.map((project) => (
-                <article className="project-card reveal" key={project.title}>
-                  <p className="card-label">{project.label}</p>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </article>
-              ))}
-            </div>
+            <ResearchExplorer projects={explorerProjects} />
           </div>
         </section>
 
@@ -414,8 +827,14 @@ function App() {
             <PublicationStats stats={publicationStats} />
             <div className="publication-links reveal" aria-label="External researcher profiles">
               {publicationLinks.map((link) => (
-                <a href={link.url} key={link.label}>
-                  {link.label}
+                <a
+                  href={link.url}
+                  key={link.label}
+                  rel={link.url.startsWith('http') ? 'noreferrer' : undefined}
+                  target={link.url.startsWith('http') ? '_blank' : undefined}
+                >
+                  <SocialIcon label={link.label} />
+                  <span>{link.label}</span>
                 </a>
               ))}
             </div>
@@ -425,15 +844,13 @@ function App() {
 
         <section className="section skills-section" id="skills">
           <div className="container skills-grid">
-            <SectionHeader eyebrow="Skills" title="Tools for seeing, sensing, and explaining change.">
-              A research and technical skill set for building, analyzing, and
-              communicating complex climate and visualization work.
+            <SectionHeader eyebrow="Explorer's Toolkit" title="A research ecosystem for insight.">
+              The technologies, methods, and platforms I use to transform
+              complex environmental challenges into meaningful insights.
             </SectionHeader>
             <div className="skill-constellation reveal">
-              {skills.map((skill) => (
-                <span className="skill-pill" key={skill}>
-                  {skill}
-                </span>
+              {skillGroups.map((group, index) => (
+                <ToolkitGroup group={group} index={index} key={group.category} />
               ))}
             </div>
           </div>
@@ -446,14 +863,20 @@ function App() {
                 <p className="eyebrow">Contact</p>
                 <h2>Open to research conversations and collaborations.</h2>
                 <p>
-                  Placeholder profile links are included for now and can be
-                  replaced with direct URLs when available.
+                  Reach out by email or connect through researcher and
+                  professional profiles.
                 </p>
               </div>
               <div className="contact-links">
                 {contactLinks.map((link) => (
-                  <a href="#" key={link}>
-                    {link}
+                  <a
+                    href={link.url}
+                    key={link.label}
+                    rel={link.url.startsWith('http') ? 'noreferrer' : undefined}
+                    target={link.url.startsWith('http') ? '_blank' : undefined}
+                  >
+                    <SocialIcon label={link.label} />
+                    <span>{link.label}</span>
                   </a>
                 ))}
               </div>
